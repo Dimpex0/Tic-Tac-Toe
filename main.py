@@ -1,6 +1,8 @@
 import pygame as pg
 import sys
 
+import pygame.display
+
 
 class MAIN:
     def __init__(self):
@@ -115,6 +117,7 @@ class MAIN:
 
 pg.init()
 screen = pg.display.set_mode((400, 500))
+pygame.display.set_caption('Tic-Tac-Toe')
 clock = pg.time.Clock()
 
 game = MAIN()
