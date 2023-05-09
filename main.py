@@ -1,8 +1,5 @@
-import time
-
 import pygame as pg
 import sys
-import queue
 
 
 class MAIN:
