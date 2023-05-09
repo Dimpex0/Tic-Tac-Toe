@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 
+
 class MAIN:
     def __init__(self):
         self.board = [[[pg.Rect(50, 100, 100, 100), "", False], [pg.Rect(150, 100, 100, 100), "", False],
