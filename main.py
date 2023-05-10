@@ -101,29 +101,9 @@ class MAIN:
             text_rect.y = 420
             screen.blit(text, text_rect)
 
-    def update(self):
-        global x_wins, o_wins
-        score_text = str(x_wins)
-        score_surface = pg.font.SysFont('timesnewroman', 35).render(score_text, True, (255, 255, 255))
-        score_x = 20
-        score_y = 50
-        score_rect = score_surface.get_rect(center=(score_x, score_y))
-        bg_rect = pygame.Rect(score_x, score_y, score_rect.width + 65, 40)
-
-        pygame.draw.rect(screen, (128,128,128), bg_rect)
-        screen.blit(score_surface, score_rect)
-        pygame.draw.rect(screen, (105,105,105), bg_rect, 2)
-
-        # score_text = str(o_wins)
-        # score_surface = pg.font.SysFont('timesnewroman', 35).render(score_text, True, (255, 255, 255))
-        score_x = 300
-        score_y = 50
-        score_rect = score_surface.get_rect(center=(score_x, score_y))
-        bg_rect = pygame.Rect(score_x, score_y, score_rect.width + 65, 40)
-
-        pygame.draw.rect(screen, (128,128,128), bg_rect)
-        screen.blit(score_surface, score_rect)
-        pygame.draw.rect(screen, (105,105,105), bg_rect, 2)
+    def update_score(self):
+        rect_x = pg.Rect(25, 50, 90, 40)
+        pg.draw.rect(screen, (156, 148, 129), rect_x)
 
         title_font = pg.font.SysFont('timesnewroman', 35)
         text = title_font.render(f'X - {x_wins}', True, (0, 0, 0))
@@ -132,10 +112,14 @@ class MAIN:
         text_rect.y = 50
         screen.blit(text, text_rect)
 
+        rect_o = pg.Rect(280, 52, 130, 40)
+        pg.draw.rect(screen, (156, 148, 129), rect_o)
+        pg.draw.circle(screen, (0, 0, 0), (300, 70), 15, 2)
+
         title_font = pg.font.SysFont('timesnewroman', 35)
-        text = title_font.render(f'O - {o_wins}', True, (0, 0, 0))
+        text = title_font.render(f' - {o_wins}', True, (0, 0, 0))
         text_rect = text.get_rect()
-        text_rect.x = 305
+        text_rect.x = 315
         text_rect.y = 50
         screen.blit(text, text_rect)
 
@@ -191,6 +175,6 @@ while True:
                         game.draw_in_cell(cell[0])
                         game.check_for_winner()
 
-    game.update()
+    game.update_score()
     pg.display.update()
     clock.tick(60)
